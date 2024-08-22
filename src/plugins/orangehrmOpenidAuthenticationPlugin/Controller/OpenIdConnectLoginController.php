@@ -73,8 +73,8 @@ class OpenIdConnectLoginController extends AbstractVueController implements Publ
         $this->getAuthUser()->setAttribute(AuthUser::OPENID_PROVIDER_ID, $provider->getId());
         $oidcClient->authenticate();
 
-        //redirect to consent always
-        $authUrl = $oidcClient->getGeneratedAuthUrl() . '&prompt=consent';
+        //DO NOT redirect to consent always
+        $authUrl = $oidcClient->getGeneratedAuthUrl();
         return new RedirectResponse($authUrl);
     }
 }
